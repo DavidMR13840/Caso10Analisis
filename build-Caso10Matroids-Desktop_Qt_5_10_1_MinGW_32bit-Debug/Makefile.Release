@@ -48,7 +48,8 @@ OBJECTS_DIR   = release
 SOURCES       = ..\Caso10Matroids\main.cpp 
 OBJECTS       = release/main.o
 
-DIST          =  matroidprocessor.h ..\Caso10Matroids\main.cpp
+DIST          =  matroidprocessor.h \
+		matroid.h ..\Caso10Matroids\main.cpp
 QMAKE_TARGET  = Caso10Matroids
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = Caso10Matroids.exe

@@ -48,7 +48,8 @@ OBJECTS_DIR   = debug
 SOURCES       = ..\Caso10Matroids\main.cpp 
 OBJECTS       = debug/main.o
 
-DIST          =  matroidprocessor.h ..\Caso10Matroids\main.cpp
+DIST          =  matroidprocessor.h \
+		matroid.h ..\Caso10Matroids\main.cpp
 QMAKE_TARGET  = Caso10Matroids
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = Caso10Matroids.exe
