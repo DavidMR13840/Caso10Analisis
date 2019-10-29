@@ -8,28 +8,43 @@
 
 using namespace std;
 
-template <class T, typename F>
 class Matroid
 {
 private:
 
 public:
-    Matroid(T array[], int size, F matroidFunction );
-    function<void()> callback;
-    T* setS;
-    T* subsetI;
+    template <typename F>
+    Matroid(void* elements, int size,F functionToCall);
+    function<void()> matroidFunction;
+    void* setS;
+    void* subsetI;
     int size_;
+    void intFunction();
+    void stringFunction();
+    void booleanFunction();
 };
 
-template <class T, typename F>
-Matroid<T,F>::Matroid(T array[], int size, F matroidFunction){
-    subsetI = NULL;
-    callback = matroidFunction;
-    size_ = size;
-    for(int counter = 0; counter < size; counter++){
-        setS[counter] = array[counter];
-    }
 
+template <typename F>
+Matroid::Matroid(void* elements, int size,F functionToCall){
+    subsetI = NULL;
+    size_ = size;
+    setS = elements;
+    matroidFunction = std::bind(functionToCall,this);
 }
+
+void Matroid::intFunction(){
+    int array[size_];
+    int subsetIndex = 0;
+    for(int elementIndex = 0; elementIndex < size_; elementIndex++){
+        if(((int*)setS)[elementIndex] <= 10){
+            array[subsetIndex] = ((int*)setS)[elementIndex];
+            subsetIndex++;
+        }
+    }
+    subsetI = array;
+}
+
+
 
 #endif // MATROID_H
