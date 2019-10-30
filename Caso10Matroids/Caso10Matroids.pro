@@ -8,3 +8,5 @@ SOURCES += main.cpp
 HEADERS += \
     matroidprocessor.h \
     matroid.h
+QMAKE_CXXFLAGS += -fopenmp
+LIBS += -fopenmp

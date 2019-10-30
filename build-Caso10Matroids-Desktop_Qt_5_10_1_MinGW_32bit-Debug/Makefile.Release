@@ -13,11 +13,11 @@ CC            = gcc
 CXX           = g++
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DQT_QML_DEBUG
 CFLAGS        = -fno-keep-inline-dllexport -O2 -Wall -W -Wextra $(DEFINES)
-CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -W -Wextra -fexceptions -mthreads $(DEFINES)
+CXXFLAGS      = -fno-keep-inline-dllexport -fopenmp -O2 -std=gnu++11 -Wall -W -Wextra -fexceptions -mthreads $(DEFINES)
 INCPATH       = -I..\Caso10Matroids -I. -ID:\Qt\5.10.1\mingw53_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,console -mthreads
-LIBS        =         
+LIBS        =        -fopenmp 
 QMAKE         = D:\Qt\5.10.1\mingw53_32\bin\qmake.exe
 IDC           = idc
 IDL           = midl
@@ -97,7 +97,8 @@ compiler_clean:
 
 ####### Compile
 
-release/main.o: ../Caso10Matroids/main.cpp ../Caso10Matroids/matroidprocessor.h
+release/main.o: ../Caso10Matroids/main.cpp ../Caso10Matroids/matroidprocessor.h \
+		../Caso10Matroids/matroid.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\Caso10Matroids\main.cpp
 
 ####### Install
