@@ -11,9 +11,8 @@ using namespace std;
 
 int main()
 {
+    //prueba 1
     int intArray[5] = {10,4,68,9,15};
-//    void* a = intArray;
-//    cout << *(static_cast<int*>(a)+1) << endl;
     string stringArray[6] = {"casa", "palabra","comida","tarea","mouse","dolor"};
     bool boolArray[5] = {true,false,true,false,false};
     Matroid matroid =  Matroid(intArray,5,&Matroid::intFunction,&Matroid::printInt);
@@ -26,9 +25,31 @@ int main()
 
     MatroidProcessor processor = MatroidProcessor(vectorMatroids,3);
     processor.processA();
-    int* k = static_cast<int*> (matroid.subsetI);
-    int p = *k;
-    getchar();
+    matroid.printSubsetI();
+    matroid2.printSubsetI();
+    matroid3.printSubsetI();
+
+
+    //prueba 2
+//    int array1[5] = {10,4,68,9,15};
+//    int array2[5] = {2,4,7,1,0};
+//    int array3[5] = {10,12,80,9,3};
+//    int array4[5] = {6,36,50,70,20};
+//    int array5[5] = {5,4,8,25,16};
+//    Matroid matroidI1 =  Matroid(array1,5,&Matroid::intFunction,&Matroid::printInt);
+//    Matroid matroidI2 =  Matroid(array2,5,&Matroid::intFunction,&Matroid::printInt);
+//    Matroid matroidI3 =  Matroid(array3,5,&Matroid::intFunction,&Matroid::printInt);
+//    Matroid matroidI4 =  Matroid(array4,5,&Matroid::intFunction,&Matroid::printInt);
+//    Matroid matroidI5 =  Matroid(array5,5,&Matroid::intFunction,&Matroid::printInt);
+//    vector<Matroid*> secondPoint = vector<Matroid*>();
+//    secondPoint.push_back(&matroidI1);
+//    secondPoint.push_back(&matroidI2);
+//    secondPoint.push_back(&matroidI3);
+//    secondPoint.push_back(&matroidI4);
+//    secondPoint.push_back(&matroidI5);
+//    MatroidProcessor processor2 = MatroidProcessor(secondPoint,5);
+//    processor2.processB();
+//    getchar();
 
     return 0;
 }

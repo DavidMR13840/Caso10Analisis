@@ -42,27 +42,36 @@ Matroid::Matroid(void* elements, int size,F functionToCall, F printFunction){
 }
 
 void Matroid::intFunction(){
+#pragma omp parallel for
     for(int elementIndex = 0; elementIndex < size_; elementIndex++){
         if(*(static_cast<int*>(setS)+elementIndex) <= 10){
             Result.push_back((static_cast<int*>(setS)+elementIndex));
+
         }
+        printf("Sec Thread %d, iteration %d\n",omp_get_thread_num(),elementIndex);
     }
 
 }
 
 void Matroid::booleanFunction(){
+    #pragma omp parallel for
     for(int elementIndex = 0; elementIndex < size_; elementIndex++){
         if(*(static_cast<bool*>(setS)+elementIndex) == true){
             Result.push_back((static_cast<bool*>(setS)+elementIndex));
+
         }
+        printf("Sec Thread %d, iteration %d\n",omp_get_thread_num(),elementIndex);
     }
 }
 
 void Matroid::stringFunction(){
+    #pragma omp parallel for
     for(int elementIndex = 0; elementIndex < size_; elementIndex++){
         if((*(static_cast<string*>(setS)+elementIndex)).length() <= 6 ){
             Result.push_back((static_cast<string*>(setS)+elementIndex));
+
         }
+        printf("Sec Thread %d, iteration %d\n",omp_get_thread_num(),elementIndex);
     }
 }
 
