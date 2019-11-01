@@ -29,6 +29,7 @@ public:
     void printInt();
     void printBoolean();
     void printString();
+    bool findSubset(int item);
 };
 
 
@@ -64,6 +65,23 @@ void Matroid::booleanFunction(){
     }
 }
 
+bool Matroid::findSubset(int item){
+    bool inSubset = false;
+    vector<void*>::iterator subIterator;
+    for(subIterator = Result.begin(); subIterator != Result.end(); ++subIterator){
+        if(item == *(static_cast<int*>(*subIterator))){
+                inSubset = true;
+                break;
+        }
+    }
+//    for(int subsetIndex = 0; subsetIndex < Result.size(); subsetIndex++){
+//        if(item ==  *(static_cast<int*>(Result[subsetIndex])) ){
+//            inSubset = true;
+//            break;
+//        }
+//    }
+    return inSubset;
+}
 void Matroid::stringFunction(){
     #pragma omp parallel for
     for(int elementIndex = 0; elementIndex < size_; elementIndex++){
